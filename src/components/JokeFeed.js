@@ -3,7 +3,7 @@ import { getJokes } from "../actions";
 import { connect } from "react-redux";
 import Joke from "./Joke";
 
-class JokeStream extends React.Component {
+class JokeFeed extends React.Component {
 
 
   componentDidMount() {
@@ -18,7 +18,7 @@ class JokeStream extends React.Component {
       
 
     return (
-      <div className="JokeStream">
+      <div className="JokeFeed">
         {this.props.jokes.map(joke => {
           return <Joke key={joke.id} joke={joke} />;
         })}
@@ -38,6 +38,6 @@ const mapStateToProps = state => {
 };
 
 export default connect(
-    mapStateToProps,
-    { getJokes }
-)(JokeStream);
+  mapStateToProps,
+  { getJokes }
+)(JokeFeed);

@@ -6,8 +6,8 @@ import { Route, Link } from "react-router-dom";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import JokeWallet from "./components/JokeWallet";
-import JokeStream from "./components/JokeStream"
 import PrivateRoute from "./PrivateRoute";
+import JokeFeed from "./components/JokeFeed";
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
       <Link to="/jokestream">Jokes</Link>
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
-      <Route path="/jokestream" component={JokeStream} />
+      <Route path="/jokestream" component={JokeFeed} />
       <PrivateRoute path="/my-wallet" component={JokeWallet} />
     </div>
   );

@@ -6,6 +6,7 @@ import { Route, Link } from "react-router-dom";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import JokeWallet from "./components/JokeWallet";
+
 import PrivateRoute from "./PrivateRoute";
 import JokeFeed from "./components/JokeFeed";
 

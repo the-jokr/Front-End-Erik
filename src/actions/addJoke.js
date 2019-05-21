@@ -5,7 +5,7 @@ export const ADD_SUCCESS = "ADD_SUCCESS";
 export const ADD_FAILED = "ADD_FAILED";
 
 export const addJoke = joke => dispatch => {
-  dispatch({ type: FETCHING_JOKES });
+  dispatch({ type: ADDING_JOKES });
   axios
     .post("https://jokr.herokuapp.com/api/jokes", joke)
     .then(res => {

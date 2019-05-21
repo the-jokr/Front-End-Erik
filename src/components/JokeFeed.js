@@ -13,7 +13,7 @@ class JokeStream extends React.Component {
   render() {
 
     if (this.props.isFetching) {
-      return <div>"Loading ...</div>
+      return <div>Loading ...</div>
       }
       
 

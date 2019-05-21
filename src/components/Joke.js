@@ -1,12 +1,3 @@
-// import {
-//   Card,
-//   CardBody,
-//   Button,
-//   CardTitle,
-//   CardText,
-//   CardImg
-// } from "reactstrap";
-
 import React from "react";
 import "../styles/JokeCard.css";
 

@@ -4,18 +4,16 @@ import { connect } from "react-redux";
 import Joke from "./Joke";
 
 class JokeFeed extends React.Component {
-
-
   componentDidMount() {
-      this.props.getJokes();
+    this.props.getJokes();
   }
 
   render() {
+    console.log(this.props);
 
     if (this.props.isFetching) {
-      return <div>Loading ...</div>
-      }
-      
+      return <div>Loading ...</div>;
+    }
 
     return (
       <div className="JokeFeed">
@@ -29,12 +27,10 @@ class JokeFeed extends React.Component {
 
 const mapStateToProps = state => {
   console.log(state);
- 
- 
   return {
-        jokes: state.getJokes.jokes,
-        isFetching: state.getJokes.isFetching
-    };
+    jokes: state.getJokes.jokes,
+    isFetching: state.getJokes.isFetching
+  };
 };
 
 export default connect(

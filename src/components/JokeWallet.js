@@ -1,14 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
+import jsonwebtoken from "jsonwebtoken";
+
 import { getWallet, getJokes, getUser } from "../actions";
 
 class JokeWallet extends React.Component {
+  state = {
+    userID: jsonwebtoken.decode(localStorage.getItem("token")).subject
+  };
+
   componentDidMount() {
-    this.props.getWallet(1);
-    this.props.getUser();
+    this.props.getWallet(this.state.userID);
   }
   render() {
-    console.log(this.props.wallet);
+    console.log(this.props.wallet.savedJokes);
     if (this.props.isFetching) {
       return <div>loading...</div>;
     }

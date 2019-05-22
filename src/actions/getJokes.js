@@ -9,11 +9,9 @@ export const getJokes = () => dispatch => {
   axios
     .get("https://jokr.herokuapp.com/api/jokes")
     .then(res => {
-      console.log(res);
       dispatch({ type: FETCHING_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      console.log(err);
       dispatch({ type: FETCHING_FAIL, payload: err });
     });
 };

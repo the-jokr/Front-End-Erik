@@ -9,8 +9,6 @@ class JokeFeed extends React.Component {
   }
 
   render() {
-    console.log(this.props);
-
     if (this.props.isFetching) {
       return <div>Loading ...</div>;
     }

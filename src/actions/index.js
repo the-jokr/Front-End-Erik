@@ -1,4 +1,13 @@
-export { ADDING_JOKES, ADD_SUCCESS, ADD_FAILED, addJoke } from "./addJoke";
+export { USER_FAILED, FETCHING_USER, GET_USER_SUCCESS, getUser } from "./getUser";
+
+export {
+  FETCHING_WALLET,
+  GET_WALLET_SUCCESS,
+  WALLET_FAILED,
+  getWallet
+} from "./getWallet";
+
+export { ADD_SUCCESS, ADD_FAILED, addJoke } from "./addJoke";
 
 export {
   FETCHING_JOKES,

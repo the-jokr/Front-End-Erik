@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import jsonwebtoken from "jsonwebtoken";
 
-import { getWallet, getJokes, getUser } from "../actions";
+import { getWallet, getJokes, delJoke } from "../actions";
 
 class JokeWallet extends React.Component {
   state = {
@@ -12,8 +12,13 @@ class JokeWallet extends React.Component {
   componentDidMount() {
     this.props.getWallet(this.state.userID);
   }
+
+  deleteJoke = (e, joke) => {
+    e.preventDefault();
+    this.props.delJoke(joke);
+  };
+
   render() {
-    console.log(this.props.wallet.savedJokes);
     if (this.props.isFetching) {
       return <div>loading...</div>;
     }
@@ -24,6 +29,7 @@ class JokeWallet extends React.Component {
           <div key={joke.id}>
             <h1>{joke.setup}</h1>
             <h4>{joke.punch_line}</h4>
+            <button onClick={e => this.deleteJoke(e, joke)}>Delete</button>
           </div>
         ))}
 
@@ -43,12 +49,11 @@ const mapStateToProps = state => {
   console.log(state);
   return {
     isFetching: state.getWallet.fetchingWallet,
-    wallet: state.getWallet.walletItems,
-    jokes: state.getJokes.jokes
+    wallet: state.getWallet.walletItems
   };
 };
 
 export default connect(
   mapStateToProps,
-  { getWallet, getJokes, getUser }
+  { getWallet, getJokes, delJoke }
 )(JokeWallet);

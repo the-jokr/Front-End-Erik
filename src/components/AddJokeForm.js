@@ -17,7 +17,8 @@ class AddJokeForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.addJoke(this.state).then(this.props.history.push("/jokesfeed"));
+    this.props.addJoke(this.state);
+    this.props.history.push("/jokesfeed");
   };
 
   render() {

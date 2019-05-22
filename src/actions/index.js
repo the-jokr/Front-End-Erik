@@ -1,4 +1,11 @@
-export { USER_FAILED, FETCHING_USER, GET_USER_SUCCESS, getUser } from "./getUser";
+export { DEL_SUCCESS, DEL_FAILED, delJoke } from "./deleteJoke";
+
+export {
+  USER_FAILED,
+  FETCHING_USER,
+  GET_USER_SUCCESS,
+  getUser
+} from "./getUser";
 
 export {
   FETCHING_WALLET,

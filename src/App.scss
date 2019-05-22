@@ -1,0 +1,42 @@
+body {
+background-color: #01BAEF;
+}
+
+#root {
+  width: 1000px;
+  margin: 0 auto;
+  position: fixed;
+  top: 16%;
+  left: 25%;
+  
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid grey;
+  border-radius: 1%;
+  height: 600px;
+  background-color: white;
+  .NavBar {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0;
+    a {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+
+  .side-menu {
+    display: flex;
+    height: 600px;
+  }
+
+  .JokeFeed {
+    display: flex;
+    flex-direction: column;
+  }
+}

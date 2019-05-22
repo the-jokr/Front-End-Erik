@@ -1,4 +1,6 @@
 import React from "react";
+import { Dimmer, Loader, Image, Segment } from "semantic-ui-react";
+
 import { getJokes } from "../actions";
 import { connect } from "react-redux";
 import Joke from "./Joke";
@@ -10,7 +12,15 @@ class JokeFeed extends React.Component {
 
   render() {
     if (this.props.isFetching) {
-      return <div>Loading ...</div>;
+      return (
+        <Segment>
+          <Dimmer active inverted>
+            <Loader size="large">Loading</Loader>
+          </Dimmer>
+
+          <Image src="https://react.semantic-ui.com/images/wireframe/paragraph.png" />
+        </Segment>
+      );
     }
     return (
       <div className="JokeFeed">

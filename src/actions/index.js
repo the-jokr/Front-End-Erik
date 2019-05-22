@@ -14,7 +14,7 @@ export {
   getWallet
 } from "./getWallet";
 
-export { ADD_SUCCESS, ADD_FAILED, addJoke } from "./addJoke";
+export { ADD_START, ADD_SUCCESS, ADD_FAILED, addJoke } from "./addJoke";
 
 export {
   FETCHING_JOKES,

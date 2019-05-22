@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { login } from "../actions";
 import "../styles/login.css";
 
-import Loader from "react-loader-spinner";
 
 class Login extends React.Component {
   state = {
@@ -51,11 +50,6 @@ class Login extends React.Component {
           {this.props.error && <p className="error">{this.props.error}</p>}
 
           <button>
-            {this.props.loggingIn ? (
-              <Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />
-            ) : (
-              "Login"
-            )}
           </button>
         </form>
       </div>

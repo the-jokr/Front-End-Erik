@@ -1,17 +1,17 @@
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
-export const ADD_SUCCESS = "ADD_SUCCESS";
-export const ADD_FAILED = "ADD_FAILED";
+export const DEL_SUCCESS = "DEL_SUCCESS";
+export const DEL_FAILED = "DEL_FAILED";
 
 export const addJoke = joke => dispatch => {
   return axiosWithAuth()
     .post("https://jokr.herokuapp.com/api/jokes", joke)
     .then(res => {
       console.log(res);
-      dispatch({ type: ADD_SUCCESS, payload: res.data });
+      dispatch({ type: DEL_SUCCESS, payload: res.data });
     })
     .catch(err => {
       console.log(err);
-      dispatch({ type: ADD_FAILED, payload: err });
+      dispatch({ type: DEL_FAILED, payload: err });
     });
 };

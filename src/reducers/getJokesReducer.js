@@ -21,7 +21,7 @@ export const getJokesReducer = (state = initialState, action) => {
       };
     case FETCHING_FAIL:
       return {
-          ...state,
+        ...state,
         isFetching: false,
         error: action.payload
       };

@@ -19,7 +19,7 @@ class AddJokeForm extends React.Component {
     e.preventDefault();
     this.props
       .addJoke(this.state)
-      .then(this.props.history.push("/jokesfeed"));
+      .then(res => this.props.history.push("/jokesfeed"));
   };
 
   render() {

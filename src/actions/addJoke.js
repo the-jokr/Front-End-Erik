@@ -8,11 +8,9 @@ export const addJoke = joke => dispatch => {
   return axiosWithAuth()
     .post("https://jokr.herokuapp.com/api/jokes", joke)
     .then(res => {
-      console.log(res);
       dispatch({ type: ADD_SUCCESS });
     })
     .catch(err => {
-      console.log(err);
       dispatch({ type: ADD_FAILED, payload: err });
     });
 };

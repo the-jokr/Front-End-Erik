@@ -6,16 +6,13 @@ import Joke from "./Joke";
 class JokeFeed extends React.Component {
   componentDidMount() {
     this.props.getJokes();
-    
   }
 
   render() {
     if (this.props.isFetching) {
       return <div>Loading ...</div>;
     }
-    console.log('render',this.props.jokes)
     return (
-
       <div className="JokeFeed">
         {this.props.jokes.map(joke => {
           return <Joke key={joke.id} joke={joke} />;
@@ -26,7 +23,6 @@ class JokeFeed extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     jokes: state.getJokes.jokes,
     isFetching: state.getJokes.isFetching

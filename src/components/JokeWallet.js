@@ -35,7 +35,9 @@ class JokeWallet extends React.Component {
 
   deleteSave = (e, joke) => {
     e.preventDefault();
-    this.props.delSaveJoke(joke);
+    this.props
+      .delSaveJoke(joke)
+      .then(res => this.props.getWallet(this.state.userID));
   };
 
   render() {
@@ -81,7 +83,6 @@ class JokeWallet extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     isFetching: state.getWallet.fetchingWallet,
     wallet: state.getWallet.walletItems

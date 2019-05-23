@@ -11,7 +11,13 @@ class JokeFeed extends React.Component {
   }
 
   render() {
-    console.log(this.props)
+    console.log(this.props.jokes);
+
+    const JokeID = this.props.jokes.map(joke => {
+      return joke.id;
+    });
+    console.log(JokeID);
+
     if (this.props.isFetching) {
       return (
         <Segment>
@@ -26,7 +32,13 @@ class JokeFeed extends React.Component {
     return (
       <div className="JokeFeed">
         {this.props.jokes.map(joke => {
-          return <Joke key={joke.id} joke={joke} saveJoke={this.props.addSavedJokes}/>;
+          return (
+            <Joke
+              key={joke.id}
+              joke={joke}
+              saveJoke={this.props.addSavedJokes}
+            />
+          );
         })}
       </div>
     );
@@ -34,6 +46,7 @@ class JokeFeed extends React.Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     jokes: state.getJokes.jokes,
     isFetching: state.getJokes.isFetching

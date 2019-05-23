@@ -1,8 +1,12 @@
 import React from "react";
 import { Accordion, Icon } from "semantic-ui-react";
+import jsonwebtoken from "jsonwebtoken";
 
 class Joke extends React.Component {
-  state = { activeIndex: -1 };
+  state = {
+    userID: jsonwebtoken.decode(localStorage.getItem("token")).subject,
+    activeIndex: -1
+  };
 
   handleClick = (e, titleProps) => {
     const { index } = titleProps;
@@ -18,6 +22,7 @@ class Joke extends React.Component {
   };
 
   render() {
+    console.log(this.state);
     const { activeIndex } = this.state;
     return (
       <Accordion fluid styled>
@@ -31,7 +36,16 @@ class Joke extends React.Component {
         </Accordion.Title>
         <Accordion.Content active={activeIndex === 0}>
           <p>{this.props.joke.punch_line}</p>
-          <button onClick={e => this.saveJoke(e, this.props.joke)}>
+          <p>{this.props.joke.likes} likes</p>
+          <button
+            onClick={e =>
+              this.saveJoke(e, {
+                joke_id: this.props.joke.id,
+                author_id: this.props.joke.author_id,
+                user_id: this.state.userID
+              })
+            }
+          >
             Save Joke
           </button>
         </Accordion.Content>

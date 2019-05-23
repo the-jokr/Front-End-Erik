@@ -28,7 +28,9 @@ class JokeWallet extends React.Component {
 
   deleteJoke = (e, joke) => {
     e.preventDefault();
-    this.props.delJoke(joke);
+    this.props
+      .delJoke(joke)
+      .then(res => this.props.getWallet(this.state.userID));
   };
 
   deleteSave = (e, joke) => {

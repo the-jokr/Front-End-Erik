@@ -18,7 +18,6 @@ class Joke extends React.Component {
   };
 
   render() {
-    console.log(this.props);
     const { activeIndex } = this.state;
     return (
       <Accordion fluid styled>

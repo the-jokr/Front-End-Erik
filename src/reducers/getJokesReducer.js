@@ -1,4 +1,4 @@
-import { FETCHING_SUCCESS, FETCHING_JOKES, FETCHING_FAIL } from "../actions";
+import { FETCHING_SUCCESS, FETCHING_JOKES, FETCHING_FAIL, } from "../actions";
 
 const initialState = {
   isFetching: false,

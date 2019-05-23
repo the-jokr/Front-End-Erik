@@ -11,6 +11,7 @@ import JokeWallet from "./components/JokeWallet";
 import JokeFeed from "./components/JokeFeed";
 import PrivateRoute from "./PrivateRoute";
 import AddJokeForm from "./components/AddJokeForm";
+import EditJokeForm from "./components/EditJokeForm";
 
 class App extends React.Component {
   // state = {
@@ -64,13 +65,13 @@ class App extends React.Component {
         <Route path="/jokesfeed" component={JokeFeed} />
         <PrivateRoute path="/my-wallet" component={JokeWallet} />
         <PrivateRoute path="/add-joke" component={AddJokeForm} />
+        <PrivateRoute path="/edit-joke" component={EditJokeForm} />
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     isLoggedIn: state.login.isLoggedIn
   };

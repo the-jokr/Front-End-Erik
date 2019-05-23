@@ -1,4 +1,8 @@
-export { DEL_SUCCESS, DEL_FAILED, delJoke } from "./deleteJoke";
+export { SET_ACTIVE_ITEM, activeItem } from "./setActiveItem";
+
+export { EDIT_START, EDIT_SUCCESS, EDIT_FAILED, editJoke } from "./editJoke";
+
+export { DEL_START, DEL_SUCCESS, DEL_FAILED, delJoke } from "./deleteJoke";
 
 export {
   USER_FAILED,

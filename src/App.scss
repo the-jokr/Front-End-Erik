@@ -1,42 +1,48 @@
 body {
-background-color: #01BAEF;
+  background-color: #01baef;
 }
 
 #root {
-  width: 1000px;
-  margin: 0 auto;
+  width   : 1000px;
+  margin  : 0 auto;
   position: fixed;
-  top: 16%;
-  left: 25%;
-  
+  top     : 16%;
+  left    : 25%;
 }
 
 .App {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  border: 1px solid grey;
-  border-radius: 1%;
-  height: 600px;
+  display         : flex;
+  flex-direction  : column;
+  width           : 100%;
+  border          : 1px solid grey;
+  border-radius   : 1%;
+  height          : 600px;
   background-color: white;
+
   .NavBar {
-    width: 100%;
-    display: flex;
+    width          : 100%;
+    display        : flex;
     justify-content: space-around;
-    margin: 10px 0;
+    margin         : 10px 0;
+
     a {
-      display: flex;
+      display        : flex;
       justify-content: space-around;
     }
   }
 
+  .wallet {
+    height  : 600px;
+    overflow: scroll;
+  }
+
   .side-menu {
     display: flex;
-    height: 600px;
+    height : 600px;
   }
 
   .JokeFeed {
-    display: flex;
+    display       : flex;
     flex-direction: column;
   }
 }

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import jsonwebtoken from "jsonwebtoken";
 import { Dimmer, Loader, Image, Segment, Divider } from "semantic-ui-react";
 
-import { getWallet, getJokes, delJoke } from "../actions";
+import { getWallet, getJokes, delJoke, activeItem } from "../actions";
 
 class JokeWallet extends React.Component {
   state = {
@@ -12,7 +12,17 @@ class JokeWallet extends React.Component {
 
   componentDidMount() {
     this.props.getWallet(this.state.userID);
+    this.props.getJokes();
+    this.setState({
+      walletJokes: this.props.wallet.submittedJokes
+    });
   }
+
+  activeItem = (e, joke) => {
+    e.preventDefault();
+    this.props.activeItem(joke);
+    this.props.history.push("/edit-joke");
+  };
 
   deleteJoke = (e, joke) => {
     e.preventDefault();
@@ -39,6 +49,7 @@ class JokeWallet extends React.Component {
             <Segment key={joke.id}>
               <h1>{joke.setup}</h1>
               <h4>{joke.punch_line}</h4>
+              <button onClick={e => this.activeItem(e, joke)}>Edit</button>
               <button onClick={e => this.deleteJoke(e, joke)}>Delete</button>
             </Segment>
           ))}
@@ -59,7 +70,6 @@ class JokeWallet extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     isFetching: state.getWallet.fetchingWallet,
     wallet: state.getWallet.walletItems
@@ -68,5 +78,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getWallet, getJokes, delJoke }
+  { getWallet, getJokes, delJoke, activeItem }
 )(JokeWallet);

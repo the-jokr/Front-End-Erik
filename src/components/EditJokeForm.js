@@ -2,12 +2,13 @@ import React from "react";
 import { connect } from "react-redux";
 import { Form, Input, Button, Icon } from "semantic-ui-react";
 
-import { addJoke } from "../actions";
+import { editJoke } from "../actions";
 
-class AddJokeForm extends React.Component {
+class EditJokeForm extends React.Component {
   state = {
-    setup: "",
-    punch_line: ""
+    id: this.props.activeJoke.id,
+    setup: this.props.activeJoke.setup,
+    punch_line: this.props.activeJoke.punch_line
   };
 
   handleChange = e => {
@@ -20,10 +21,12 @@ class AddJokeForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props
-      .addJoke(this.state)
-      .then(res => this.props.history.push("/jokesfeed"));
+      .editJoke(this.state)
+      .then(res => this.props.history.push("/my-wallet"));
   };
   render() {
+    console.log(this.props.activeJoke);
+    console.log(this.state);
     return (
       <div>
         <Form onSubmit={this.handleSubmit}>
@@ -59,7 +62,14 @@ class AddJokeForm extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    activeJoke: state.activeItem.activeItem
+  };
+};
+
 export default connect(
-  null,
-  { addJoke }
-)(AddJokeForm);
+  mapStateToProps,
+  { editJoke }
+)(EditJokeForm);

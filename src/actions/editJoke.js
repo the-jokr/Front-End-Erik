@@ -7,7 +7,7 @@ export const EDIT_FAILED = "EDIT_FAILED";
 export const editJoke = joke => dispatch => {
   dispatch({ type: EDIT_START });
   return axiosWithAuth()
-    .put(`https://jokr.herokuapp.com/api/jokes/${joke.id}`)
+    .put(`https://jokr.herokuapp.com/api/jokes/${joke.id}`, joke)
     .then(res => {
       console.log(res);
       dispatch({ type: EDIT_SUCCESS, payload: res.data });

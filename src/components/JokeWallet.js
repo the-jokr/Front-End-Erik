@@ -12,10 +12,6 @@ class JokeWallet extends React.Component {
 
   componentDidMount() {
     this.props.getWallet(this.state.userID);
-    this.props.getJokes();
-    this.setState({
-      walletJokes: this.props.wallet.submittedJokes
-    });
   }
 
   activeItem = (e, joke) => {
@@ -26,7 +22,7 @@ class JokeWallet extends React.Component {
 
   deleteJoke = (e, joke) => {
     e.preventDefault();
-    this.props.delJoke(joke);
+    this.props.delJoke(joke).then(res => window.location.reload());
   };
 
   render() {

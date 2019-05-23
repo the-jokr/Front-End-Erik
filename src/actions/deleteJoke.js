@@ -6,11 +6,11 @@ export const DEL_FAILED = "DEL_FAILED";
 
 export const delJoke = joke => dispatch => {
   dispatch({type: DEL_START})
-  axiosWithAuth()
+  return axiosWithAuth()
     .delete(`https://jokr.herokuapp.com/api/jokes/${joke.id}`)
     .then(res => {
       console.log(res);
-      dispatch({ type: DEL_SUCCESS, payload: res.data });
+      dispatch({ type: DEL_SUCCESS, payload: joke.id });
     })
     .catch(err => {
       console.log(err);

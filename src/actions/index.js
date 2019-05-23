@@ -1,3 +1,17 @@
+export {
+  DELSAVE_START,
+  DELSAVE_SUCCESS,
+  DELSAVE_FAILED,
+  delSaveJoke
+} from "./deleteJoke";
+
+export {
+  ADD_SAVED_START,
+  ADD_SAVED_SUCCESS,
+  ADD_SAVED_FAIL,
+  addSavedJokes
+} from "./addSavedJoke";
+
 export { SET_ACTIVE_ITEM, activeItem } from "./setActiveItem";
 
 export { EDIT_START, EDIT_SUCCESS, EDIT_FAILED, editJoke } from "./editJoke";

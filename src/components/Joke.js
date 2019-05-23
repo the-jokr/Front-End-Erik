@@ -11,7 +11,14 @@ class Joke extends React.Component {
 
     this.setState({ activeIndex: newIndex });
   };
+
+  saveJoke = (e, joke) => {
+    e.preventDefault();
+    this.props.saveJoke(joke);
+  };
+
   render() {
+    console.log(this.props);
     const { activeIndex } = this.state;
     return (
       <Accordion fluid styled>
@@ -25,6 +32,9 @@ class Joke extends React.Component {
         </Accordion.Title>
         <Accordion.Content active={activeIndex === 0}>
           <p>{this.props.joke.punch_line}</p>
+          <button onClick={e => this.saveJoke(e, this.props.joke)}>
+            Save Joke
+          </button>
         </Accordion.Content>
       </Accordion>
     );

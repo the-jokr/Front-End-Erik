@@ -1,7 +1,7 @@
 import React from "react";
 import { Dimmer, Loader, Image, Segment } from "semantic-ui-react";
 
-import { getJokes } from "../actions";
+import { getJokes, addSavedJokes } from "../actions";
 import { connect } from "react-redux";
 import Joke from "./Joke";
 
@@ -11,6 +11,7 @@ class JokeFeed extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     if (this.props.isFetching) {
       return (
         <Segment>
@@ -25,7 +26,7 @@ class JokeFeed extends React.Component {
     return (
       <div className="JokeFeed">
         {this.props.jokes.map(joke => {
-          return <Joke key={joke.id} joke={joke} />;
+          return <Joke key={joke.id} joke={joke} saveJoke={this.props.addSavedJokes}/>;
         })}
       </div>
     );
@@ -41,5 +42,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getJokes }
+  { getJokes, addSavedJokes }
 )(JokeFeed);

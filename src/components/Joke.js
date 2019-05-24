@@ -4,7 +4,9 @@ import jsonwebtoken from "jsonwebtoken";
 
 class Joke extends React.Component {
   state = {
-    userID: jsonwebtoken.decode(localStorage.getItem("token")).subject,
+    userID: jsonwebtoken.decode(localStorage.getItem("token"))
+      ? jsonwebtoken.decode(localStorage.getItem("token")).subject
+      : null,
     activeIndex: -1
   };
 

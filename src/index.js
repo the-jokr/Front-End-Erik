@@ -13,10 +13,10 @@ import App from "./App";
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Router>
-      <App />
-    </Router>
-  </Provider>,
-  document.getElementById("root")
+    <Provider store={store}>
+        <Router>
+            <App />
+        </Router>
+    </Provider>,
+    document.getElementById("root")
 );

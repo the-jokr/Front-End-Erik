@@ -6,6 +6,6 @@ export const axiosWithAuth = () => {
         headers: {
             Authorization: token
         },
-        baseURL: "https://jokr.herokuapp.com/api/"
+        baseURL: "https://the-joker-spa.herokuapp.com/api/"
     });
 };

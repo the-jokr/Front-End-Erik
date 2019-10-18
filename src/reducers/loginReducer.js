@@ -3,7 +3,7 @@ import { LOGIN_START, LOGIN_SUCCESSFUL, LOGIN_FAILURE } from "../actions";
 const initialState = {
     loggingIn: false,
     error: null,
-    isLoggedIn: true
+    isLoggedIn: false
 };
 
 export const loginReducer = (state = initialState, action) => {

@@ -1,75 +1,66 @@
-import React from "react";
-import { connect } from "react-redux";
+import React, { useState } from "react";
+import { connect, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { login } from "../actions";
 
 import { Button, Divider, Form, Grid, Segment } from "semantic-ui-react";
 
-class Login extends React.Component {
-    state = {
-        credentials: {
-            username: "",
-            password: ""
+const Login = props => {
+    const [username, setUser] = useState("");
+    const [password, setPass] = useState("");
+    const loginState = useSelector(state => state.login);
+    console.log(loginState);
+
+    const login = e => {
+        e.preventDefault();
+        props.login({ username, password });
+        if (loginState.error !== null) {
+            props.history.push("/jokesfeed");
         }
     };
 
-    handleChange = e => {
-        this.setState({
-            credentials: {
-                ...this.state.credentials,
-                [e.target.name]: e.target.value
-            }
-        });
-    };
+    return (
+        <Segment placeholder>
+            <Grid columns={2} relaxed='very' stackable>
+                <Grid.Column>
+                    <Form onSubmit={login}>
+                        <Form.Input
+                            icon='user'
+                            iconPosition='left'
+                            label='Username'
+                            placeholder='Username'
+                            name='username'
+                            value={username}
+                            onChange={e => setUser(e.target.value)}
+                        />
+                        <Form.Input
+                            icon='lock'
+                            iconPosition='left'
+                            label='Password'
+                            type='password'
+                            name='password'
+                            value={password}
+                            onChange={e => setPass(e.target.value)}
+                        />
+                        <Button content='Login' primary />
+                        <p>
+                            {loginState.error ? loginState.error.message : null}
+                        </p>
+                    </Form>
+                </Grid.Column>
 
-    login = e => {
-        e.preventDefault();
-        this.props
-            .login(this.state.credentials)
-            .then(() => this.props.history.push("/jokesfeed"));
-    };
+                <Grid.Column verticalAlign='middle'>
+                    <Button size='big'>
+                        <Link to='/register'>Register</Link>
+                    </Button>
+                </Grid.Column>
+            </Grid>
 
-    render() {
-        return (
-            <Segment placeholder>
-                <Grid columns={2} relaxed='very' stackable>
-                    <Grid.Column>
-                        <Form onSubmit={this.login}>
-                            <Form.Input
-                                icon='user'
-                                iconPosition='left'
-                                label='Username'
-                                placeholder='Username'
-                                name='username'
-                                value={this.state.credentials.username}
-                                onChange={this.handleChange}
-                            />
-                            <Form.Input
-                                icon='lock'
-                                iconPosition='left'
-                                label='Password'
-                                type='password'
-                                name='password'
-                                value={this.state.credentials.password}
-                                onChange={this.handleChange}
-                            />
-                            <Button content='Login' primary />
-                        </Form>
-                    </Grid.Column>
-
-                    <Grid.Column verticalAlign='middle'>
-                        <Button size='big'>
-                            <Link to='/register'>Register</Link>
-                        </Button>
-                    </Grid.Column>
-                </Grid>
-
-                <Divider vertical>Or</Divider>
-            </Segment>
-        );
-    }
-}
+            <Divider vertical>Or</Divider>
+        </Segment>
+    );
+};
 
 const mapStateToProps = ({ error, loggingIn }) => ({
     error,

@@ -9,7 +9,6 @@ export const register = creds => dispatch => {
     return axios
         .post("https://the-joker-spa.herokuapp.com/api/auth/register", creds)
         .then(res => {
-            console.log(res);
             dispatch({ type: REGISTER_SUCCESSFUL });
         })
         .catch(err => {

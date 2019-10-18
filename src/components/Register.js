@@ -1,62 +1,53 @@
-import React from "react";
-import { connect } from "react-redux";
+import React, { useState } from "react";
+import { connect, useSelector } from "react-redux";
 import { Button, Form } from "semantic-ui-react";
 
 import { register } from "../actions";
 
-class Register extends React.Component {
-    state = {
-        credentials: {
-            username: "",
-            password: ""
+const Register = props => {
+    const [username, setUser] = useState("");
+    const [password, setPass] = useState("");
+    const registerState = useSelector(state => state.register);
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        props.register({ username, password });
+
+        if (registerState.error === null) {
+            props.history.push("/login");
         }
     };
 
-    handleChange = e => {
-        this.setState({
-            credentials: {
-                ...this.state.credentials,
-                [e.target.name]: e.target.value
-            }
-        });
-    };
-
-    handleSubmit = e => {
-        e.preventDefault();
-        this.props.register(this.state.credentials);
-    };
-
-    render() {
-        console.log(this.state);
-        return (
-            <div>
-                <Form onSubmit={this.handleSubmit}>
-                    <Form.Input
-                        icon='user'
-                        iconPosition='left'
-                        label='Username'
-                        name='username'
-                        onChange={this.handleChange}
-                        value={this.state.credentials.username}
-                    />
-                    <Form.Input
-                        icon='lock'
-                        iconPosition='left'
-                        label='Password'
-                        type='password'
-                        name='password'
-                        onChange={this.handleChange}
-                        value={this.state.credentials.password}
-                    />
-                    <Button content='Register' primary />
-                </Form>
-            </div>
-        );
-    }
-}
+    return (
+        <div>
+            <Form onSubmit={handleSubmit}>
+                <Form.Input
+                    icon='user'
+                    iconPosition='left'
+                    label='Username'
+                    name='username'
+                    onChange={e => setUser(e.target.value)}
+                    value={username}
+                />
+                <Form.Input
+                    icon='lock'
+                    iconPosition='left'
+                    label='Password'
+                    type='password'
+                    name='password'
+                    onChange={e => setPass(e.target.value)}
+                    value={password}
+                />
+                <p>
+                    {registerState.error ? registerState.error.message : null}
+                </p>
+                <Button content='Register' primary />
+            </Form>
+        </div>
+    );
+};
 
 const mapStateToProps = state => {
-    console.log(state);
     return {
         registering: state.register.registering
     };
